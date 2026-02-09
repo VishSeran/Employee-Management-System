@@ -1,6 +1,4 @@
 
-
-
 public class Employee implements Cloneable {
 
     private String name;
@@ -77,7 +75,7 @@ public class Employee implements Cloneable {
     }
 
     public void display(){
-        System.out.println("Empployee's Details");
+        System.out.println("Employee's Details");
         System.out.println("____________________");
         System.out.println("Name: " + this.name);
         System.out.println("Age: " + this.age);
