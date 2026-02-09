@@ -70,10 +70,25 @@ public class Employee implements Cloneable {
             double raiseAmount = this.salary*percentage; 
             this.salary += raiseAmount;
             System.out.println("You have raused by: " + raiseAmount);
-            System.out.println("Your new salary: " + this.getSalary());
+            System.out.println("Your new salary: " + this.salary);
         }else{
             System.out.println("Raise cannot be null or negative");
         }
+    }
+
+    public void display(){
+        System.out.println("Empployee's Details");
+        System.out.println("____________________");
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+        System.out.println("Monthly salary: $" + String.format("%.2f", this.salary));
+        System.out.println("Annual salary: $" + String.format("%.2f", annualSalary()));
+        System.out.println("____________________");
+    }
+
+    @Override
+    protected  Object clone() throws CloneNotSupportedException{
+        return super.clone();
     }
 
     
