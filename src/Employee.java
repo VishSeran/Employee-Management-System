@@ -1,19 +1,21 @@
 
+
+
 public class Employee implements Cloneable {
 
     private String name;
     private int age;
-    private float salary;
+    private double  salary;
 
     //Default constructor
     public Employee() {
         this.name = "Unknown";
         this.age = 18;
-        this.salary = 0.0f;
+        this.salary = 0.0;
     }
 
     //parameterized constructor
-    public Employee(String name, int age, float salary) {
+    public Employee(String name, int age, double salary) {
         this.name = name;
         this.age = age;
         this.salary = salary;
@@ -28,7 +30,7 @@ public class Employee implements Cloneable {
         return this.age;
     }
 
-    public float getSalary() {
+    public double getSalary() {
         return this.salary;
     }
 
@@ -50,11 +52,29 @@ public class Employee implements Cloneable {
         }
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(double salary) {
         if (salary >= 0) {
             this.salary = salary;
         }else {
             System.out.println("Salary cannot be negative");
         }
     }
+
+    public double annualSalary(){
+        double salaryAnnual = this.salary*12;
+        return salaryAnnual;
+    }
+
+    public void giveRaise(double percentage){
+        if(percentage > 0 ){
+            double raiseAmount = this.salary*percentage; 
+            this.salary += raiseAmount;
+            System.out.println("You have raused by: " + raiseAmount);
+            System.out.println("Your new salary: " + this.getSalary());
+        }else{
+            System.out.println("Raise cannot be null or negative");
+        }
+    }
+
+    
 }
