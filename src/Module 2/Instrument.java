@@ -88,6 +88,42 @@ class Guitar extends StringedInstrument implements Tunable, Maintainable {
         return "Inspect is started now";
     }
 
+}
+
+class Piano extends Instrument implements Tunable, Maintainable{
+
+    private boolean isGrand;
+
+    public Piano (String name, int year, boolean isGrand){
+        super(name, year);
+        this.isGrand = isGrand;
+    }
+
+    public String play(){
+        return "Playing a piano";
+    }
+
+    public String tune(){
+        return "tuning start";
+    }
+
+    public String adjustPitch(boolean up){
+        if(up){
+            return "pitched upwared adjusted";
+        } else {
+            return "already adjusted";
+        } 
+
+        
+    }
+
+    public String clean(){
+        return "Piano is cleaned";
+    }
+
+    public String inspect(){
+        return "Inspect is started now";
+    }
 
 
 }
