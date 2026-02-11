@@ -16,6 +16,10 @@ abstract class Instrument {
         return ("name" + this.name + "\nyear: " + this.year);
     }
 
+    public String getName() {
+        return name;
+    }
+
 }
 
 // Step 2: Create an interface Tunable
@@ -61,15 +65,15 @@ class Guitar extends StringedInstrument implements Tunable, Maintainable {
         super(name, year, numberOFStrings);
         this.guitarType = guitarType;
     }
-
+    @Override
     public String play(){
-        return ("guitar playing");
+        return ("Guitar playing");
     }
-
+    @Override
     public String tune(){
         return "tuning start";
     }
-
+    @Override
     public String adjustPitch(boolean up){
         if(up){
             return "pitched upwared adjusted";
@@ -79,11 +83,11 @@ class Guitar extends StringedInstrument implements Tunable, Maintainable {
 
         
     }
-
+    @Override
     public String clean(){
         return "Guitar is cleaned";
     }
-
+    @Override
     public String inspect(){
         return "Inspect is started now";
     }
@@ -98,15 +102,15 @@ class Piano extends Instrument implements Tunable, Maintainable{
         super(name, year);
         this.isGrand = isGrand;
     }
-
+    @Override
     public String play(){
         return "Playing a piano";
     }
-
+    @Override
     public String tune(){
         return "tuning start";
     }
-
+    @Override
     public String adjustPitch(boolean up){
         if(up){
             return "pitched upwared adjusted";
@@ -116,11 +120,11 @@ class Piano extends Instrument implements Tunable, Maintainable{
 
         
     }
-
+    @Override
     public String clean(){
         return "Piano is cleaned";
     }
-
+    @Override
     public String inspect(){
         return "Inspect is started now";
     }
