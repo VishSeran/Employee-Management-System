@@ -26,7 +26,7 @@ public class Book {
         return this.publicationYear;
     }
 
-    public boolean getAvailability() {
+    public boolean isAvailability() {
         return this.isAvailable;
     }
 

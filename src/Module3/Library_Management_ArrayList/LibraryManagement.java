@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.net.ssl.ExtendedSSLSession;
 
 public class LibraryManagement {
 
@@ -20,7 +21,7 @@ public class LibraryManagement {
             System.out.println("\n===== Library Management System =====");
             System.out.println("1. Add a book");
             System.out.println("2. View all books");
-            System.out.println("3. Search for a book by title");
+            System.out.println("3. Search for a book by title or author");
             System.out.println("4. Check out a book");
             System.out.println("5. Return a book");
             System.out.println("6. Sort books");
@@ -44,7 +45,11 @@ public class LibraryManagement {
 
                     case 3:
                         System.out.println("Loading...");
-                        getBookByName();
+                        getBookByName(scanner, library);
+
+                    case 4:
+                        System.out.println("Checkout processing...");
+                        checkOutBook();
 
                 }
 
@@ -118,6 +123,43 @@ public class LibraryManagement {
             }
         }
 
+    }
+
+    private static void checkOutBook(Scanner scanner, ArrayList<Book> library) {
+
+        if (library.isEmpty()) {
+            System.out.println("\nLibrary is empty");
+
+        } else {
+            for (int i = 0; i < library.size(); i++) {
+                Book book = library.get(i);
+
+                if (book.isAvailability()) {
+                    System.out.println((i + 1) + ". " + book + " available");
+                } else {
+                    System.out.println((i + 1) + ". " + book + " unavailable");
+                }
+            }
+
+            try {
+                int checkOutNumber = Integer.parseInt(scanner.nextLine());
+
+                if(checkOutNumber <1 || checkOutNumber > library.size()){
+                    System.out.println("Number should in between 1 and "+ library.size());
+                }else{
+                    Book selectedBook = library.get(checkOutNumber-1);
+
+                    if(selectedBook.checkOut()){
+                        System.out.println("Book checkout successfully: " + selectedBook);
+                    }else{
+                        System.out.println("Book is already checkedOut");
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number input!");
+            }
+
+        }
     }
 
 }
