@@ -36,13 +36,15 @@ public class LibraryManagement {
                         System.out.println("Adding book");
                         addBook(scanner, library);
                         break;
-                    
+
                     case 2:
                         System.out.println("Books are loading...");
                         getBooks(library);
                         break;
-                    
+
                     case 3:
+                        System.out.println("Loading...");
+                        getBookByName();
 
                 }
 
@@ -79,19 +81,43 @@ public class LibraryManagement {
         System.out.println("\nNew book successfully added!");
     }
 
+    private static void getBooks(ArrayList<Book> library) {
 
-    private static void getBooks(ArrayList<Book>library){
-
-        if(library.isEmpty()){
+        if (library.isEmpty()) {
             System.out.println("Library is empty!");
-            
-        }else{
-            for(int i = 0; i<library.size();i++){
 
-                System.out.println( (i+1) + "." + library.get(i));
+        } else {
+            for (int i = 0; i < library.size(); i++) {
+
+                System.out.println((i + 1) + "." + library.get(i));
             }
         }
     }
 
-    
+    private static void getBookByName(Scanner scanner, ArrayList<Book> library) {
+        System.out.println("Enter Book Name (title or author): ");
+        String name = scanner.nextLine();
+
+        boolean found = false;
+
+        if (library.isEmpty()) {
+            System.err.println("\nLibrary have no books yet");
+        } else {
+            for (int i = 0; i < library.size(); i++) {
+                Book book = library.get(i);
+
+                if (book.getTitle().toLowerCase().contains(name) || book.getAuthor().toLowerCase().contains(name)) {
+                    found = true;
+                    System.out.println((i + 1) + ". " + book);
+                }
+
+            }
+
+            if (!found) {
+                System.out.println("No books found matching \"" + name + "\"");
+            }
+        }
+
+    }
+
 }
