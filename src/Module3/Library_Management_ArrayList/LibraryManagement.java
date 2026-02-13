@@ -4,11 +4,9 @@ import java.util.Scanner;
 
 public class LibraryManagement {
 
-    public static void main(String[]
-         (args){
-    
-    
-            Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
         ArrayList<Book> library = new ArrayList<>();
 
         // Add some sample books to the library (optional)
@@ -36,7 +34,7 @@ public class LibraryManagement {
                 switch (userInput) {
                     case 1:
                         System.out.println("Adding book");
-                        addBook();
+                        addBook(scanner, library);
                         break;
                 }
 
