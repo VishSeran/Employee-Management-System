@@ -36,6 +36,14 @@ public class LibraryManagement {
                         System.out.println("Adding book");
                         addBook(scanner, library);
                         break;
+                    
+                    case 2:
+                        System.out.println("Books are loading...");
+                        getBooks(library);
+                        break;
+                    
+                    case 3:
+
                 }
 
             } catch (NumberFormatException e) {
@@ -70,4 +78,20 @@ public class LibraryManagement {
 
         System.out.println("\nNew book successfully added!");
     }
+
+
+    private static void getBooks(ArrayList<Book>library){
+
+        if(library.isEmpty()){
+            System.out.println("Library is empty!");
+            
+        }else{
+            for(int i = 0; i<library.size();i++){
+
+                System.out.println( (i+1) + "." + library.get(i));
+            }
+        }
+    }
+
+    
 }
