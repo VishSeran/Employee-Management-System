@@ -1,17 +1,15 @@
-package Module3.Library Management by ArrayList;
+
 
 public class Book {
 
     private String bookTitle;
     private String author;
-    private String genre;
     private int publicationYear;
     private boolean isAvailable;
 
-    public Book(String bookTitle, String author, String genre, int publicationYear) {
+    public Book(String bookTitle, String author, int publicationYear) {
         this.bookTitle = bookTitle;
         this.author = author;
-        this.genre = genre;
         this.publicationYear = publicationYear;
         this.isAvailable = true;
     }
@@ -24,10 +22,6 @@ public class Book {
         return this.author;
     }
 
-    public String getGenre() {
-        return this.genre;
-    }
-
     public int getPublicationYear() {
         return this.publicationYear;
     }
@@ -38,10 +32,6 @@ public class Book {
 
     public void setTitle(String title) {
         bookTitle = title;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public void setAuthor(String author) {
@@ -77,8 +67,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Name: " + this.bookTitle + "/nAuthor: " + this.author + "/nYear: " + this.publicationYear
-                + "/nAvailability: " + (isAvailable ? "Available" : "Not available");
+        return "Name: " + this.bookTitle + "\nAuthor: " + this.author + "\nYear: " + this.publicationYear
+                + "\nAvailability: " + (isAvailable ? "Available" : "Not available");
     }
 
 }

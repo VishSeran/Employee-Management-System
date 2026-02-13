@@ -1,0 +1,75 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LibraryManagement {
+
+    public static void main(String[]
+         (args){
+    
+    
+            Scanner scanner = new Scanner(System.in);
+        ArrayList<Book> library = new ArrayList<>();
+
+        // Add some sample books to the library (optional)
+        library.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925));
+        library.add(new Book("To Kill a Mockingbird", "Harper Lee", 1960));
+        library.add(new Book("1984", "George Orwell", 1949));
+
+        boolean running = true;
+        while (running) {
+            // Display menu options
+            System.out.println("\n===== Library Management System =====");
+            System.out.println("1. Add a book");
+            System.out.println("2. View all books");
+            System.out.println("3. Search for a book by title");
+            System.out.println("4. Check out a book");
+            System.out.println("5. Return a book");
+            System.out.println("6. Sort books");
+            System.out.println("7. View available books only");
+            System.out.println("8. Exit");
+            System.out.print("Enter your choice: ");
+
+            try {
+                int userInput = Integer.parseInt(scanner.nextLine());
+
+                switch (userInput) {
+                    case 1:
+                        System.out.println("Adding book");
+                        addBook();
+                        break;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number input!...try again");
+            }
+
+        }
+
+    }
+
+    private static void addBook(Scanner scanner, ArrayList<Book> library) {
+        System.out.println("Enter Book Name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("\nEnter Author Name: ");
+        String author = scanner.nextLine();
+
+        int year = 0;
+        boolean validYear = false;
+        while (!validYear) {
+            System.out.print("Enter publication year: ");
+            try {
+                year = Integer.parseInt(scanner.nextLine());
+                validYear = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid year. Please enter a number.");
+            }
+        }
+
+        Book newBook = new Book(name, author, year);
+        library.add(newBook);
+
+        System.out.println("\nNew book successfully added!");
+    }
+}
