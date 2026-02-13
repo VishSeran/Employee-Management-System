@@ -1,7 +1,6 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.net.ssl.ExtendedSSLSession;
 
 public class LibraryManagement {
 
@@ -49,7 +48,7 @@ public class LibraryManagement {
 
                     case 4:
                         System.out.println("Checkout processing...");
-                        checkOutBook();
+                        checkOutBook(scanner, library);
 
                 }
 
