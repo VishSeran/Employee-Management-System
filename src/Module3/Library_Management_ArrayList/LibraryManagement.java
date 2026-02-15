@@ -280,4 +280,26 @@ public class LibraryManagement {
 
     }
 
+     private static void viewAvailableBooks(ArrayList<Book> library) {
+        System.out.println("\n----- Available Books -----");
+        
+        if (library.isEmpty()) {
+            System.out.println("The library is empty.");
+            return;
+        }
+        
+        boolean found = false;
+        for (int i = 0; i < library.size(); i++) {
+            Book book = library.get(i);
+            if (book.isAvailability()) {
+                System.out.println((i + 1) + ". " + book);
+                found = true;
+            }
+        }
+        
+        if (!found) {
+            System.out.println("No books are currently available.");
+        }
+    }
+
 }
