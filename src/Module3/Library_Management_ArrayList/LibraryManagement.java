@@ -1,4 +1,5 @@
 
+import java.awt.font.NumericShaper;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,6 +50,10 @@ public class LibraryManagement {
                     case 4:
                         System.out.println("Checkout processing...");
                         checkOutBook(scanner, library);
+
+                    case 5:
+                        System.out.println("Retrning processing...");
+                        returnBook(scanner, library);
 
                 }
 
@@ -143,14 +148,14 @@ public class LibraryManagement {
             try {
                 int checkOutNumber = Integer.parseInt(scanner.nextLine());
 
-                if(checkOutNumber <1 || checkOutNumber > library.size()){
-                    System.out.println("Number should in between 1 and "+ library.size());
-                }else{
-                    Book selectedBook = library.get(checkOutNumber-1);
+                if (checkOutNumber < 1 || checkOutNumber > library.size()) {
+                    System.out.println("Number should in between 1 and " + library.size());
+                } else {
+                    Book selectedBook = library.get(checkOutNumber - 1);
 
-                    if(selectedBook.checkOut()){
+                    if (selectedBook.checkOut()) {
                         System.out.println("Book checkout successfully: " + selectedBook);
-                    }else{
+                    } else {
                         System.out.println("Book is already checkedOut");
                     }
                 }
@@ -159,6 +164,58 @@ public class LibraryManagement {
             }
 
         }
+    }
+
+    private static void returnBackBook(Scanner scanner, ArrayList<Book> library) {
+        System.out.println("Enter the book name");
+        String bookName = scanner.nextLine();
+
+        boolean isReturned = false;
+
+        if (library.isEmpty()) {
+            System.out.println("Library is empty now. thank you for ur support!");
+            return;
+        }
+
+        //show checkpout books
+        boolean hasChecked = false;
+        for (int i = 0; i < library.size(); i++) {
+            Book book = library.get(i);
+
+            if (!book.isAvailability()) {
+                System.out.println(i + 1 + ". " + book);
+                hasChecked = true;
+            }
+        }
+
+        if (!hasChecked) {
+            System.out.println("No book are currently checkut!");
+            return;
+        }
+
+        //return a book by selction
+        System.out.println("Please enter the number of the book you want to return: ");
+        int number = Integer.parseInt(scanner.nextLine());
+
+        try {
+            if (number < 1 || number > library.size()) {
+                System.out.println("Invalid book number! please try again");
+                return;
+            }
+
+            Book selectedBook = library.get(number - 1);
+
+            if(selectedBook.returnBook()){
+                System.out.println(selectedBook + " Book return Suucessfull!");
+            }else{
+                System.out.println("Book return failed!");
+            }
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input type!");
+        }
+
     }
 
 }
